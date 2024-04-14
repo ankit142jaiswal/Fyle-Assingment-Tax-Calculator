@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      .form-control {
+        font-weight: bold;
+        font-size: large;
+      }
+
+      .form-select {
+        font-weight: bold;
+        font-size: large;
+      }
+      .button {
+        font-weight: bold;
+        font-size: large;
+      }
+     
+    </style>
+  </head>
+  <body
+    style="
+      background-color: rgb(231, 231, 231);
+      font-weight: bold;
+      font-size: large;
+    "
+  >
+    <div class="container p-5">
+      <div class="row">
+        <div class="col-2"></div>
+        <div
+          class="col-8 3 p-4"
+          style="
+            background-color: rgb(196, 205, 204);
+            border-radius: 5px;
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);
+          "
+        >
+          <div>
+            <h2 style="text-align: center">Tax Calculator</h2>
+          </div>
+          <hr />
+          <form id="taxForm">
+            <div class="mb-3">
+              <label for="grossIncome" class="form-label"
+                >Enter Gross Annual Income
+                <span
+                  class="tt"
+                  data-bs-palcement="top"
+                  title="Gross annual income is your total salary in a year before any deductions"
+                >
+                  <img src="faq1.png" alt="" style="height: 15px" />
+                </span>
+              </label>
+              <div class="input-group border border-3 border-dark">
+                <input
+                  type="text"
+                  class="form-control border-0 shadow-none"
+                  data-bs-palcement="top"
+                  title="Please enter numbers only"
+                  id="grossIncome"
+                  onchange="incomeError()"
+                  placeholder="Enter gross annual Income"
+                /><span
+                  class="input-group-text"
+                  style="background-color: white"
+                >
+                  <img
+                    class="tt"
+                    data-bs-palcement="top"
+                    title="Please enter numbers only"
+                    id="warning1"
+                    src="warning.png"
+                    alt=""
+                    style="height: 15px"
+                  />
+                  <img
+                    class="tt"
+                    data-bs-palcement="top"
+                    title="Input field is mandatory"
+                    id="warning11"
+                    src="warning.png"
+                    alt=""
+                    style="height: 15px"
+                  />
+
+                  <script>
+                    document.getElementById("warning11").style.display = "none";
+                    document.getElementById("warning1").style.display = "none";
+                  </script>
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="extraIncome" class="form-label"
+                >Enter Extra Income
+                <span
+                  class="tt"
+                  data-bs-palcement="top"
+                  title="Supplemental income is extra money or gifts employees earn on top of their regular "
+                >
+                  <img src="faq1.png" alt="" style="height: 15px" />
+                </span>
+              </label>
+              <div class="input-group border border-3 border-dark">
+                <input
+                  type="text"
+                  class="form-control border-0 shadow-none"
+                  id="extraIncome"
+                  onchange="extraError()"
+                  placeholder="Enter extra income from other sources"
+                />
+                <span class="input-group-text" style="background-color: white">
+                  <img
+                    class="tt"
+                    data-bs-palcement="top"
+                    title="Please enter numbers only"
+                    id="warning2"
+                    src="warning.png"
+                    alt=""
+                    style="height: 15px"
+                  /><img
+                    class="tt"
+                    data-bs-palcement="top"
+                    title="Input field is mandatory"
+                    id="warning22"
+                    src="warning.png"
+                    alt=""
+                    style="height: 15px"
+                  />
+                  <script>
+                    document.getElementById("warning22").style.display = "none";
+                    document.getElementById("warning2").style.display = "none";
+                  </script>
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="ageGroup" class="form-label"
+                >Enter Age Group
+                <span
+                  class="tt"
+                  data-bs-palcement="top"
+                  title="Select one of three options according to your age."
+                >
+                  <img src="faq1.png" alt="" style="height: 15px" />
+                </span>
+              </label>
+
+              <div class="input-group border border-3 border-dark">
+                <select
+                  id="ageGroup"
+                  class="form-select border-0 shadow-none"
+                  onchange="ageError()"
+                  aria-label="Default select example"
+                >
+                  <option selected value="0">Enter age group</option>
+                  <option value="1">Less than 40</option>
+                  <option value="2">40 or more than 40 but Less than 60</option>
+                  <option value="3">60 or more than 60</option>
+                </select>
+                <span class="input-group-text" style="background-color: white">
+                  <img
+                    class="tt"
+                    data-bs-palcement="top"
+                    title="Please select age category "
+                    id="warning3"
+                    src="warning.png"
+                    alt=""
+                    style="height: 15px"
+                  />
+                  <img
+                    class="tt"
+                    data-bs-palcement="top"
+                    title="Input field is mandatory "
+                    id="warning33"
+                    src="warning.png"
+                    alt=""
+                    style="height: 15px"
+                  />
+                  <script>
+                    document.getElementById("warning33").style.display = "none";
+
+                    document.getElementById("warning3").style.display = "none";
+                  </script>
+                </span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="applicableDeductions" class="form-label"
+                >Enter Total Applicable Deductions
+                <span
+                  class="tt"
+                  data-bs-palcement="top"
+                  title="Individual taxpayers get an additional deduction of Rs 50,000 under Section 80CCD(1B)"
+                >
+                  <img src="faq1.png" alt="" style="height: 15px" />
+                </span>
+              </label>
+              <div class="input-group border border-3 border-dark">
+                <input
+                  type="text"
+                  class="form-control border-0 shadow-none"
+                  data-bs-palcement="top"
+                  id="applicableDeductions"
+                  onchange="deductionsError()"
+                  placeholder="Add total applicable deductions"
+                />
+                <span style="background-color: white" class="input-group-text">
+                  <img
+                    class="tt"
+                    data-bs-palcement="top"
+                    title="Please enter numbers only"
+                    id="warning4"
+                    src="warning.png"
+                    alt=""
+                    style="height: 15px"
+                  />
+                  <img
+                    class="tt"
+                    data-bs-palcement="top"
+                    title="Input field is mandatory"
+                    id="warning44"
+                    src="warning.png"
+                    alt=""
+                    style="height: 15px"
+                  />
+                  <script>
+                    document.getElementById("warning44").style.display = "none";
+
+                    document.getElementById("warning4").style.display = "none";
+                  </script>
+                </span>
+              </div>
+            </div>
+            <button type="submit" class="button btn btn-primary">Submit</button>
+          </form>
+
+          <div id="modal" class="modal container1 p-5">
+            <div class="row">
+              <div class="col-2"></div>
+              <div
+                class="col-8 p-5 mt-5"
+                style="
+                  border-radius: 5px;
+                  background-color: rgb(196, 205, 204);
+                  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.2);                
+                  text-align: center;
+                "
+              >
+                <h1 id="taxResult" class="p-2"></h1>
+                <h3 id="totalIncome" class="p-1"></h3>
+                <h3 id="tax" class="p-1"></h3>
+                <hr />
+                <h3 id="overallIncome" class="p-1"></h3>
+                <p id="text" class="p-1"></p>
+                <button class="button btn btn-success close">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    document
+      .getElementById("taxForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+        const age = document.getElementById("ageGroup").value;
+        const income = parseFloat(document.getElementById("grossIncome").value);
+        const extraIncome = parseFloat(
+          document.getElementById("extraIncome").value
+        );
+        const deductions = parseFloat(
+          document.getElementById("applicableDeductions").value
+        );
+        if (age > 0 && income >= 0 && extraIncome >= 0 && deductions >= 0) {
+          let taxRate;
+          if (age === "1") taxRate = 0.3;
+          else if (age === "2") taxRate = 0.4;
+          else if (age === "3") taxRate = 0.1;
+          else {
+            ageError();
+            return;
+          }
+
+          var totalIncome = income + extraIncome - deductions;
+          if (totalIncome <= 800000) {
+            var tax = 0;
+            var overallIncome = totalIncome;
+          } else {
+            var tax = (totalIncome - 800000) * taxRate;
+            var overallIncome = totalIncome - tax;
+          }
+
+          document.getElementById(
+            "taxResult"
+          ).textContent = `Your overall Income will be`;
+          document.getElementById(
+            "totalIncome"
+          ).textContent = `Total Income = Rs. ${totalIncome.toFixed(2)}`;
+          document.getElementById(
+            "tax"
+          ).textContent = `Total Tax    = Rs. ${tax.toFixed(2)}`;
+
+          document.getElementById(
+            "overallIncome"
+          ).textContent = `Overall Income = Rs. ${overallIncome.toFixed(2)}`;
+          document.getElementById("text").textContent = `after tax deductions`;
+
+          if (!isNaN(overallIncome)) {
+            document.getElementById("modal").style.display = "block";
+          }
+        } else {
+          incomeError();
+          extraError();
+          ageError();
+          deductionsError();
+
+          return;
+        }
+      });
+
+    document
+      .getElementsByClassName("close")[0]
+      .addEventListener("click", function () {
+        document.getElementById("modal").style.display = "none";
+      });
+
+    function incomeError() {
+      let income = document.getElementById("grossIncome").value;
+      if (income.length == 0) {
+        document.getElementById("warning1").style.display = "none";
+        document.getElementById("warning11").style.display = "block";
+      } else if (isNaN(income) || income === !Number) {
+        document.getElementById("warning11").style.display = "none";
+        document.getElementById("warning1").style.display = "block";
+      } else {
+        document.getElementById("warning11").style.display = "none";
+        document.getElementById("warning1").style.display = "none";
+      }
+    }
+    function extraError() {
+      let extra = document.getElementById("extraIncome").value;
+      if (extra.length == 0) {
+        document.getElementById("warning2").style.display = "none";
+        document.getElementById("warning22").style.display = "block";
+      } else if (isNaN(extra) || extra === !Number) {
+        document.getElementById("warning22").style.display = "none";
+        document.getElementById("warning2").style.display = "block";
+      } else {
+        document.getElementById("warning22").style.display = "none";
+        document.getElementById("warning2").style.display = "none";
+      }
+    }
+
+    function ageError() {
+      let age = document.getElementById("ageGroup").value;
+
+      if (age === "0") {
+       
+        document.getElementById("warning33").style.display = "block";
+        
+      } else {
+        document.getElementById("warning33").style.display = "none";
+
+      }
+    }
+    function deductionsError() {
+      let deductions = document.getElementById("applicableDeductions").value;
+
+      if (deductions.length == 0) {
+        document.getElementById("warning4").style.display = "none";
+        document.getElementById("warning44").style.display = "block";
+      } else if (isNaN(deductions) || deductions === !Number) {
+        document.getElementById("warning44").style.display = "none";
+        document.getElementById("warning4").style.display = "block";
+      } else {
+        document.getElementById("warning44").style.display = "none";
+        document.getElementById("warning4").style.display = "none";
+       }
+    }
+    const tooltips = document.querySelectorAll(".tt");
+    tooltips.forEach((t) => {
+      new bootstrap.Tooltip(t);
+    });
+  </script>
+</html>
